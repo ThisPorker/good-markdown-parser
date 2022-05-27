@@ -12,7 +12,7 @@ import java.nio.file.Files;
 
 public class MarkdownParseTest {
 
-    *@Test
+    @Test
     public void TestSnipp1() throws IOException{
         List expected = List.of("google.com", "google.com", "ucsd.edu");
 
@@ -23,7 +23,7 @@ public class MarkdownParseTest {
         assertEquals(expected, actual);
     }
 
-    *@Test
+    @Test
     public void TestSnipp2() throws IOException{
         List expected = List.of("a.com", "a.com(())", "example.com");
 
@@ -34,7 +34,7 @@ public class MarkdownParseTest {
         assertEquals(expected, actual);
     }
 
-    *@Test
+    @Test
     public void TestSnipp3() throws IOException{
         List expected = List.of("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
 
