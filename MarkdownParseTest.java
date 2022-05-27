@@ -12,7 +12,39 @@ import java.nio.file.Files;
 
 public class MarkdownParseTest {
 
-    @Test
+    *@Test
+    public void TestSnipp1() throws IOException{
+        List expected = List.of("google.com", "google.com", "ucsd.edu");
+
+        Path fileName = Path.of("snipp1.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> actual = MarkdownParse.getLinks(content);
+
+        assertEquals(expected, actual);
+    }
+
+    *@Test
+    public void TestSnipp2() throws IOException{
+        List expected = List.of("a.com", "a.com(())", "example.com");
+
+        Path fileName = Path.of("snipp2.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> actual = MarkdownParse.getLinks(content);
+
+        assertEquals(expected, actual);
+    }
+
+    *@Test
+    public void TestSnipp3() throws IOException{
+        List expected = List.of("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
+
+        Path fileName = Path.of("snipp3.md");
+        String content = Files.readString(fileName);
+        ArrayList<String> actual = MarkdownParse.getLinks(content);
+
+        assertEquals(expected, actual);
+    }
+    /*@Test
     public void Test1() throws IOException{
         List expected = List.of("https://something.com","some-thing.html");
 
@@ -98,6 +130,6 @@ public class MarkdownParseTest {
         ArrayList<String> actual = MarkdownParse.getLinks(content);
 
         assertEquals(expected, actual);
-    }
+    } */
 }
 
