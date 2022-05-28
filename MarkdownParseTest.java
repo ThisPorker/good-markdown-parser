@@ -13,38 +13,30 @@ import java.nio.file.Files;
 public class MarkdownParseTest {
 
     @Test
-    public void TestSnipp1() throws IOException{
-        List expected = List.of("google.com", "google.com", "ucsd.edu");
-
+    public void testSnipp1() throws IOException
+    {
         Path fileName = Path.of("snipp1.md");
-        String content = Files.readString(fileName);
-        ArrayList<String> actual = MarkdownParse.getLinks(content);
-
-        assertEquals(expected, actual);
+        String contents = Files.readString(fileName);
+        assertEquals(List.of("`google.com","google.com","ucsd.edu"),MarkdownParse.getLinks(contents));
     }
 
     @Test
-    public void TestSnipp2() throws IOException{
-        List expected = List.of("a.com", "a.com(())", "example.com");
-
+    public void testSnipp2() throws IOException
+    {
         Path fileName = Path.of("snipp2.md");
-        String content = Files.readString(fileName);
-        ArrayList<String> actual = MarkdownParse.getLinks(content);
-
-        assertEquals(expected, actual);
+        String contents = Files.readString(fileName);
+        assertEquals(List.of("a.com","a.com(())","example.com"),MarkdownParse.getLinks(contents));
     }
 
     @Test
-    public void TestSnipp3() throws IOException{
-        List expected = List.of("https://sites.google.com/eng.ucsd.edu/cse-15l-spring-2022/schedule");
-
+    public void testSnipp3() throws IOException
+    {
         Path fileName = Path.of("snipp3.md");
-        String content = Files.readString(fileName);
-        ArrayList<String> actual = MarkdownParse.getLinks(content);
-
-        assertEquals(expected, actual);
+        String contents = Files.readString(fileName);
+        assertEquals(List.of("https://www.twitter.com ","https://ucsd-cse15l-w22.github.io/","https://cse.ucsd.edu"),MarkdownParse.getLinks(contents));
     }
-    /*@Test
+    
+    @Test
     public void Test1() throws IOException{
         List expected = List.of("https://something.com","some-thing.html");
 
@@ -130,6 +122,6 @@ public class MarkdownParseTest {
         ArrayList<String> actual = MarkdownParse.getLinks(content);
 
         assertEquals(expected, actual);
-    } */
+    } 
 }
 
